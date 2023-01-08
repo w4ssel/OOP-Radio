@@ -5,6 +5,12 @@ import ru.netology.Radio;
 public class RadioTest {
 
     @Test
+    public void numberOfStations() {
+        Radio radio = new Radio(10);
+        Assertions.assertEquals(10, radio.numberOfStations);
+    }
+
+    @Test
     public void shouldSetStation() {
         Radio radio = new Radio();
         radio.setCurrentStation(5);
@@ -98,7 +104,7 @@ public class RadioTest {
     @Test
     public void shouldNotSetVolumeAboveMax() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(15);
+        radio.setCurrentVolume(101);
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -142,10 +148,10 @@ public class RadioTest {
     @Test
     public void shouldNotIncreaseVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
